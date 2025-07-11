@@ -1,7 +1,10 @@
 export default function OurStory() {
   return (
-    <section id="story" className="bg-[#f8f1e9] py-20 px-4 text-[#2b1608]">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section
+      id="story"
+      className="bg-[#f8f1e9] py-20 px-4 text-[#2b1608] shadow-lg"
+    >
+      <div className="max-w-7xl mx-auto space-y-16 shadow-amber-400">
         {/* Top section */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left text */}
@@ -16,7 +19,7 @@ export default function OurStory() {
           </div>
 
           {/* Right column with 2 stacked images */}
-          <div className=" flex gap-4">
+          <div className=" flex  gap-4">
             <img
               src="./images/masiko.jpg"
               alt="Cultural Performance"
