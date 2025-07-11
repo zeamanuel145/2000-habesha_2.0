@@ -6,7 +6,13 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-yellow-800 font-bold">H</span>
+                <span>
+                  <img
+                    src="./images/logo.jpg"
+                    alt="Logo"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                </span>{" "}
               </div>
               <div>
                 <h3 className="font-bold">2000 Habesha Cultural</h3>
@@ -37,7 +43,9 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-yellow-700 mt-8 pt-8 flex justify-between items-center">
-          <p className="text-sm">&copy; 2024 2000 Habesha Cultural Restaurant. All rights reserved.</p>
+          <p className="text-sm">
+            &copy; 2024 2000 Habesha Cultural Restaurant. All rights reserved.
+          </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-yellow-300 transition-colors">
               Instagram
@@ -55,5 +63,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
