@@ -1,9 +1,8 @@
 export default function OurStory() {
   return (
-//  <!-- our story -->
+    //  <!-- our story -->
     <section id="story" class="py-16 bg-coffee-gradient">
       <div class="max-w-7xl mx-auto px-4">
-
         {/* // <!-- first layer --> */}
 
         <div class="grid md:grid-cols-2">
@@ -11,7 +10,7 @@ export default function OurStory() {
             <h2 class="text-4xl font-bold text-amber-800 mb-12 text-center">
               Our Story
             </h2>
-            <p class="text-gray-700 text-lg w-3xl">
+            <p class="text-gray-700 text-lg w-xl">
               Our journey began in the heart of Addis Ababa, where family
               recipes have been passed down through generations. We are inspired
               by our vision. We built this space to offer more than traditional
@@ -21,23 +20,23 @@ export default function OurStory() {
           <div class>
             <div class="flex items-center space-y-4">
               <img
-                src="/asset/img/masiko.jpg"
+                src="./images/masiko.jpg"
                 alt="Restaurant Interior"
                 class="rounded-lg w-full h-60 object-cover shadow-lg"
               />
               <img
-                src="/asset/img/agelgle.jpg"
+                src="./images/agelgle.jpg"
                 alt="Traditional Coffee Ceremony"
                 class="rounded-lg w-full h-48 object-cover shadow-lg"
               />
             </div>
           </div>
         </div>
-         {/* second layer  */}
+        {/* second layer  */}
         <div class="grid grid-cols-2 gap-4">
           <div>
             <img
-              src="/asset/img/tradishinal_place.jpg"
+              src="./images/tradishinal_place.jpg"
               alt="Cultural Performance"
               class="rounded-lg w-full h-60 object-cover shadow-lg"
             />
@@ -59,5 +58,5 @@ export default function OurStory() {
         </div>
       </div>
     </section>
-  )
+  );
 }
