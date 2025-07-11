@@ -15,6 +15,7 @@ class CustomOllamaLLM(LLM):
     generation_options: dict = {
         "temperature" : 0.0,
         "top_p": 1,
+        "stop": ["\nObservation:", "\nFinal Answer:"],
         "repeat_penalty": 1.1
     }
 
@@ -31,6 +32,11 @@ class CustomOllamaLLM(LLM):
             "stream" : False,
             "options": self.generation_options
         }
+        if stop is not None:
+            if "stop" in payload["options"]:
+                payload["options"]["stop"].extend(stop)
+            else:
+                payload["options"]["stop"] = stop
 
         try:
             response = requests.post(self.ollama_url, json=payload)
@@ -73,7 +79,6 @@ Action Input: the input to the action
 Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can repeat N times)
 Thought: I now know the final answer
-**DIRECT ANSWER ONLY. NO INTRODUCTIONS, NO CONVERSATIONAL PHRASES, NO EXTRA TEXT.**
 
 Final Answer: the final answer to the original input question
 

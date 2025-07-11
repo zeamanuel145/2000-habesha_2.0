@@ -1,13 +1,28 @@
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI,HTTPException, Request, status
 from typing import Dict, Any
+from fastapi.middleware.cors import CORSMiddleware
+import logging
 import uuid
 import asyncio
 from chatbot import initialize_chatbot_agent
 from models import *
 
+
+logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', handlers=[logging.StreamHandler()])
+logger = logging.getLogger(__name__)
 app = FastAPI(title="2000Habesha Restaurant Chatbot API",
               description="API for 2000Habesha Cultural Restaurant",
               version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:8000",
+                   "http://localhost:11434"],
+    allow_credentials=True,
+    allow_headers = ["*"],
+    allow_methods=["GET","POST"]
+)
+
 active_sessions: Dict[str, Any] = {} #Will store each active chat session's chatbot brain
 
 @app.get("/") #This is the landing page
@@ -60,7 +75,7 @@ async def get_chat_history(session_id: str):
     formatted_history = []
     for msg in history_messages:
         sender = 'user' if msg.type == 'human' else 'bot'
-        formatted_history.append(ChatMessage(session_id=session_id, text=msg.content))
+        formatted_history.append(ChatMessage(sender=sender, text=msg.content))
 
     return HistoryResponse(session_id=session_id, chat_history=formatted_history)
 

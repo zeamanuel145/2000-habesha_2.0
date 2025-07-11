@@ -9,7 +9,7 @@ class ChatMessage(BaseModel):
 # Model for an incoming chat request from a user
 class ChatRequest(BaseModel):
     session_id: Optional[str] = Field(None, description="Optional session ID")
-    message: str = Field(...,example="Tell me about your location",description="The user's message to the chatbot" )
+    message: str = Field(...,example="Tell me about 2000Habesha",description="The user's message to the chatbot" )
 
 # Model for the response we send back after a chat message
 class ChatResponse(BaseModel):
