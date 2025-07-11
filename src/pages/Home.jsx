@@ -4,6 +4,7 @@ import FeaturedDishes from "../components/FeaturedDishes";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import Map from "../components/Map";
+import Message from "../components/Message";
 
 export default function Home({ onReservationClick }) {
   return (
@@ -11,6 +12,7 @@ export default function Home({ onReservationClick }) {
       <Hero onReservationClick={onReservationClick} />
       <OurStory />
       <FeaturedDishes />
+      <Message onReservationClick={onReservationClick} />
       <Testimonials />
       <Map />
       <Footer />
