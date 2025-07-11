@@ -1,3 +1,5 @@
+import { Link } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-yellow-800 text-white py-12">
@@ -22,7 +24,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Contact us</h4>
+            <Link href="../Contact" className="block mb-4">
+              <h4 className="font-semibold text-blue-500 mb-4">Contact us</h4>
+            </Link>
             <p className="text-sm mb-2">habesha2000@gmail.com</p>
             <p className="text-sm">+251 912 838 383</p>
           </div>
