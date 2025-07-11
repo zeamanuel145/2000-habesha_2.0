@@ -23,7 +23,9 @@ export default function Hero({ onReservationClick }) {
   return (
     <section
       className="relative h-screen bg-cover bg-center transition-all duration-1000 ease-in-out"
-      style={{ backgroundImage: `url(${images[currentImage]})` }}
+      style={{
+        backgroundImage: `url(${images[currentImage]})`,
+      }}
     >
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
       <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center">
@@ -38,13 +40,13 @@ export default function Hero({ onReservationClick }) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={onReservationClick}
-              className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+              className="bg-[#A9713F] hover:bg-[#996633] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
             >
               Reserve a Table
             </button>
             <Link
               to="/menu"
-              className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-lg text-lg font-semibold transition-colors inline-block"
+              className="text-white inline-block bg-[#A9713F] hover:bg-[#996633] px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
             >
               Browse Menu
             </Link>
