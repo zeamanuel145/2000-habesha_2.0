@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Star, Check, X } from "lucide-react"
-import Footer from "../components/Footer"
+
 
 export default function Feedback() {
   const [formData, setFormData] = useState({
@@ -179,8 +179,6 @@ export default function Feedback() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }
