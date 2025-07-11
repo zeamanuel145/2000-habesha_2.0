@@ -48,16 +48,28 @@ export default function Footer() {
           </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Instagram
+              <img
+                src="./icons/instagram.svg"
+                alt="Instagram"
+                className="w-8 h-8"
+              />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Facebook
+              <img
+                src="./icons/facebook.svg"
+                alt="Facebook"
+                className="w-8 h-8"
+              />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Twitter
+              <img src="./icons/x.svg" alt="twitter" className="w-8 h-8" />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              LinkedIn
+              <img
+                src="./icons/linkedin.svg"
+                alt="LinkedIn"
+                className="w-8 h-8"
+              />
             </a>
           </div>
         </div>
