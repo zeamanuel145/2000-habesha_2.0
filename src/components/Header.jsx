@@ -1,34 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sun, Moon, Globe } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import { Menu, X, Globe } from "lucide-react";
+import ThemeToggle from "./ThemeContext";
 
 export default function Header({ onReservationClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
 
-  // Background image rotation logic
-  const headerImages = ["../../public/images/Hero-img1.png"];
-  const [bgIndex, setBgIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % headerImages.length);
-    }, 8000); // Rotate every 8 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-cover bg-center bg-no-repeat border-b border-white/20 shadow-sm transition-all duration-700 ease-in-out"
-      style={{ backgroundImage: `url(${headerImages[bgIndex]})` }}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-cover bg-center bg-no-repeat border-b border-white/20 shadow-sm transition-all duration-700 ease-in-out dark:bg-black bg-black/20">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo & Name */}
         <Link to="/" className="flex items-center space-x-2">
@@ -74,24 +58,13 @@ export default function Header({ onReservationClick }) {
 
         {/* Right Side Buttons */}
         <div className="flex items-center space-x-3">
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="text-white hover:text-yellow-400 transition"
-            title="Toggle theme"
-          >
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
-
-          {/* Reserve Button */}
+          <ThemeToggle /> {/* dark/light toggle button */}
           <button
             onClick={onReservationClick}
             className="bg-yellow-600 hover:bg-yellow-700 text-white px-5 py-2 rounded-lg transition hidden md:block"
           >
             Reserve
           </button>
-
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white"
@@ -103,7 +76,7 @@ export default function Header({ onReservationClick }) {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black px-4 pt-4 pb-6 space-y-4 text-white">
+        <div className="md:hidden bg-black px-4 pt-4 pb-6 space-y-4 text-white dark:bg-black">
           {[
             { label: "Home", path: "/" },
             { label: "Menu", path: "/menu" },
@@ -122,7 +95,6 @@ export default function Header({ onReservationClick }) {
             </Link>
           ))}
 
-          {/* Language Switch */}
           <div className="flex items-center space-x-1 pt-2 border-t border-white/20">
             <Globe size={16} className="text-white" />
             <span className="text-sm">
@@ -130,7 +102,6 @@ export default function Header({ onReservationClick }) {
             </span>
           </div>
 
-          {/* Reserve button in mobile */}
           <button
             onClick={() => {
               setIsMenuOpen(false);
