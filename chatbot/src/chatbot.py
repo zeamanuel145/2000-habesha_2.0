@@ -4,7 +4,7 @@ import requests
 import json
 query = "Where is the restaurant located?"
 
-data = knowledge_base.similarity_search(query=query, k=3)
+data = knowledge_base.similarity_search(query=query, k=1)
 # print("Result:", data)
 
 # prompt_template = """
@@ -41,7 +41,7 @@ response = requests.post(
             "temperature":0.0,
             "top_p": 0.1,
             "repeat_penalty": 1.1,
-            "num_predict": 50
+            # "num_predict": 50
         }
     }
 ).json()

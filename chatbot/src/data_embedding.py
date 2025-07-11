@@ -6,7 +6,7 @@ from pdf_loaders import extacted_pdf_text
 
 #Create text chunks
 def pdf_text_to_chunks(extracted_pdf_text):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=200)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=50)
     text_chunks = text_splitter.split_documents(extracted_pdf_text)
 
     return text_chunks
@@ -25,7 +25,7 @@ text_chunks = pdf_text_to_chunks(extracted_pdf_text=extacted_pdf_text)
 
 # embeddings = download_hugging_face_embedding() #This will run on a new system if the embedding model is not already downloaded
 embeddings = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en-v1.5",
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
     encode_kwargs={"normalize_embeddings": True}
 )
 query_result = embeddings.embed_query("Hello world")
