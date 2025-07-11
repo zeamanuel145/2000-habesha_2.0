@@ -27,8 +27,7 @@ app = FastAPI(title="2000Habesha Restaurant Chatbot API",
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:8000",
-                   "http://localhost:11434",
-                   "*",]
+                   "http://localhost:11434"],
     allow_credentials=True,
     allow_headers = ["*"],
     allow_methods=["GET","POST"]
@@ -44,7 +43,6 @@ async def root():
 @app.post("/chat", response_model=ChatResponse, summary="Send a message to the chatbot and get a response") #This is the endpoint for sending prompts
 async def chat_endpoint(request: ChatRequest):
     # Send a prompt to the chatbot
-    logger.info(f"Received chat request from IP: {request.client.host} for session: {request.session_id}")
     session_id = request.session_id if request.session_id else str(uuid.uuid4())
     user_message = request.message #This is the user's message
 
