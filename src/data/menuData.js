@@ -2,7 +2,7 @@ export const menuItems = [
   {
     id: 1,
     name: "Kitfo",
-    price: "From $15",
+    price: "From birr 15",
     image: "/placeholder.svg?height=200&width=300",
     description:
       "Kitfo is a traditional Ethiopian dish featuring finely minced raw beef, seasoned with a blend of spices including mitmita (a spicy chili powder blend) and niter kibbeh (spiced clarified butter). The key ingredients are raw beef, typically a top-quality cut, mitmita spice blend, and niter kibbeh (spiced clarified butter).",
@@ -19,7 +19,7 @@ export const menuItems = [
   {
     id: 2,
     name: "Doro Wot",
-    price: "From $18",
+    price: "From birr 18",
     image: "/placeholder.svg?height=200&width=300",
     description:
       "Ethiopia's national dish - a rich, spicy chicken stew with hard-boiled eggs, slow-cooked with berbere spice blend and served with injera.",
@@ -30,7 +30,7 @@ export const menuItems = [
   {
     id: 3,
     name: "Vegetarian Combo",
-    price: "From $12",
+    price: "From birr 12",
     image: "/placeholder.svg?height=200&width=300",
     description:
       "A variety of vegetarian dishes served on traditional injera bread, including lentils, vegetables, and legumes.",
@@ -41,7 +41,7 @@ export const menuItems = [
   {
     id: 4,
     name: "Tibs",
-    price: "From $16",
+    price: "From birr 16",
     image: "/placeholder.svg?height=200&width=300",
     description: "Sautéed beef or lamb with vegetables and Ethiopian spices, served sizzling hot.",
     ingredients: ["Beef/Lamb", "Onions", "Peppers", "Rosemary", "Ethiopian spices"],
@@ -51,7 +51,7 @@ export const menuItems = [
   {
     id: 5,
     name: "Injera Firfir",
-    price: "From $10",
+    price: "From birr 10",
     image: "/placeholder.svg?height=200&width=300",
     description: "Shredded injera mixed with berbere sauce and spices, a comfort food favorite.",
     ingredients: ["Injera", "Berbere sauce", "Onions", "Tomatoes", "Spices"],
@@ -61,7 +61,7 @@ export const menuItems = [
   {
     id: 6,
     name: "Shiro Wot",
-    price: "From $11",
+    price: "From birr 11",
     image: "/placeholder.svg?height=200&width=300",
     description: "Ground chickpea stew with berbere spice, a beloved vegetarian dish.",
     ingredients: ["Ground chickpeas", "Berbere", "Onions", "Garlic", "Oil"],
@@ -71,7 +71,7 @@ export const menuItems = [
   {
     id: 7,
     name: "Gomen",
-    price: "From $9",
+    price: "From birr 9",
     image: "/placeholder.svg?height=200&width=300",
     description: "Collard greens cooked with garlic, ginger, and spices.",
     ingredients: ["Collard greens", "Garlic", "Ginger", "Onions", "Spices"],
@@ -81,7 +81,7 @@ export const menuItems = [
   {
     id: 8,
     name: "Kitfo Dulet",
-    price: "From $17",
+    price: "From birr 17",
     image: "/placeholder.svg?height=200&width=300",
     description: "Mixed organ meat dish with spices, a traditional delicacy.",
     ingredients: ["Mixed organ meat", "Spices", "Onions", "Peppers", "Herbs"],
@@ -91,7 +91,7 @@ export const menuItems = [
   {
     id: 9,
     name: "Fish Tibs",
-    price: "From $19",
+    price: "From birr 19",
     image: "/placeholder.svg?height=200&width=300",
     description: "Fresh fish sautéed with vegetables and Ethiopian spices.",
     ingredients: ["Fresh fish", "Onions", "Peppers", "Tomatoes", "Ethiopian spices"],
@@ -104,7 +104,7 @@ export const drinkItems = [
   {
     id: 101,
     name: "Ethiopian Coffee",
-    price: "From $5",
+    price: "From birr 5",
     image: "/placeholder.svg?height=200&width=300",
     description:
       "Traditional Ethiopian coffee ceremony with freshly roasted beans, served in three rounds: Abol, Tona, and Baraka.",
@@ -115,7 +115,7 @@ export const drinkItems = [
   {
     id: 102,
     name: "Tej",
-    price: "From $8",
+    price: "From birr 8",
     image: "/placeholder.svg?height=200&width=300",
     description: "Traditional Ethiopian honey wine, fermented with gesho (hops) for a unique sweet taste.",
     ingredients: ["Honey", "Gesho (Ethiopian hops)", "Water", "Time for fermentation"],
@@ -125,7 +125,7 @@ export const drinkItems = [
   {
     id: 103,
     name: "Tella",
-    price: "From $6",
+    price: "From birr 6",
     image: "/placeholder.svg?height=200&width=300",
     description: "Traditional Ethiopian beer made from barley and gesho, with a mild alcoholic content.",
     ingredients: ["Barley", "Gesho", "Water", "Natural fermentation"],
@@ -135,7 +135,7 @@ export const drinkItems = [
   {
     id: 104,
     name: "Spiced Tea",
-    price: "From $4",
+    price: "From birr 4",
     image: "/placeholder.svg?height=200&width=300",
     description: "Ethiopian spiced tea with cardamom, cinnamon, and cloves.",
     ingredients: ["Black tea", "Cardamom", "Cinnamon", "Cloves", "Sugar"],
@@ -145,7 +145,7 @@ export const drinkItems = [
   {
     id: 105,
     name: "Fresh Juice",
-    price: "From $6",
+    price: "From birr 6",
     image: "/placeholder.svg?height=200&width=300",
     description: "Freshly squeezed fruit juices including mango, papaya, and avocado.",
     ingredients: ["Fresh seasonal fruits", "Natural sweeteners", "Ice"],
@@ -155,7 +155,7 @@ export const drinkItems = [
   {
     id: 106,
     name: "Bottled Water",
-    price: "From $2",
+    price: "From birr 2",
     image: "/placeholder.svg?height=200&width=300",
     description: "Pure bottled water, locally sourced and refreshing.",
     ingredients: ["Pure water", "Natural minerals"],
