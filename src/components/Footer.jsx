@@ -44,7 +44,7 @@ export default function Footer() {
 
         <div className="border-t border-yellow-700 mt-8 pt-8 flex justify-between items-center">
           <p className="text-sm">
-            &copy; 2024 2000 Habesha Cultural Restaurant. All rights reserved.
+            &copy; 2025 2000 Habesha Cultural Restaurant. All rights reserved.
           </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-yellow-300 transition-colors">
