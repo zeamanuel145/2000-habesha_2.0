@@ -3,7 +3,7 @@ export const menuItems = [
     id: 1,
     name: "Kitfo",
     price: "From birr 15",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/ktfo.jpg",
     description:
       "Kitfo is a traditional Ethiopian dish featuring finely minced raw beef, seasoned with a blend of spices including mitmita (a spicy chili powder blend) and niter kibbeh (spiced clarified butter). The key ingredients are raw beef, typically a top-quality cut, mitmita spice blend, and niter kibbeh (spiced clarified butter).",
     ingredients: [
@@ -20,7 +20,7 @@ export const menuItems = [
     id: 2,
     name: "Doro Wot",
     price: "From birr 18",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/doro.jpg",
     description:
       "Ethiopia's national dish - a rich, spicy chicken stew with hard-boiled eggs, slow-cooked with berbere spice blend and served with injera.",
     ingredients: ["Chicken", "Berbere spice", "Onions", "Hard-boiled eggs", "Niter kibbeh"],
@@ -31,7 +31,7 @@ export const menuItems = [
     id: 3,
     name: "Vegetarian Combo",
     price: "From birr 12",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/beye_aynet.jpg",
     description:
       "A variety of vegetarian dishes served on traditional injera bread, including lentils, vegetables, and legumes.",
     ingredients: ["Injera", "Lentils", "Cabbage", "Collard greens", "Chickpeas"],
@@ -42,7 +42,7 @@ export const menuItems = [
     id: 4,
     name: "Tibs",
     price: "From birr 16",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/tbs.jpg",
     description: "Sautéed beef or lamb with vegetables and Ethiopian spices, served sizzling hot.",
     ingredients: ["Beef/Lamb", "Onions", "Peppers", "Rosemary", "Ethiopian spices"],
     category: "main",
@@ -52,7 +52,7 @@ export const menuItems = [
     id: 5,
     name: "Injera Firfir",
     price: "From birr 10",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/frifr.jpg",
     description: "Shredded injera mixed with berbere sauce and spices, a comfort food favorite.",
     ingredients: ["Injera", "Berbere sauce", "Onions", "Tomatoes", "Spices"],
     category: "main",
@@ -62,7 +62,7 @@ export const menuItems = [
     id: 6,
     name: "Shiro Wot",
     price: "From birr 11",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "./images/shiro.jpg",
     description: "Ground chickpea stew with berbere spice, a beloved vegetarian dish.",
     ingredients: ["Ground chickpeas", "Berbere", "Onions", "Garlic", "Oil"],
     category: "vegetarian",
