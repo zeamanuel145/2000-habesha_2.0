@@ -1,6 +1,7 @@
 #Import the required components
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+
 import logging
 
 logging.basicConfig(
@@ -23,6 +24,7 @@ def load_pdfs(pdf_root_directory: str):
     except Exception as e:
         logger.error(f"Error loading PDF documents from {pdf_root_directory} : {e}")
         raise RuntimeError(f"Failed to load PDF documents: {e}")
+
     
 directory = "../restaurant_details"
 extacted_pdf_text = load_pdfs(directory)

@@ -61,17 +61,18 @@ class CustomOllamaLLM(LLM):
 
 #Prompt template for the RAG direct answers
 RAG_TOOL_PROMPT_TEMPLATE = """
+
 Extract the exact answer from the restaurant information below.
 
 Restaurant Information:
 {context}
 
 Question: {question}
-
 Provide only the direct answer. For location: give the full address. For hours: give exact times. For reservations: list the steps. Be DIRECT and MINIMIZE PROVIDING UNNECESSARY INFORMATION. ANSWER WHAT IS ASKED, DIRECTLY AND AS STRAIGHTFORWARD AS POSSIBLE. DON'T SHOW THE CHAT DIALOGUE, JUST PROVIDE THE ANSWER, NOTHING MORE, NOTHING LESS!
 
 Answer:
 """
+
 
 RAG_TOOL_PROMPT = PromptTemplate(template=RAG_TOOL_PROMPT_TEMPLATE, input_variables=["context", "question"])
 
@@ -185,5 +186,4 @@ def initialize_chatbot_agent() -> AgentExecutor:
         raise RuntimeError(f"Could not create chatbot agent. \n{e}")
     
     
-    
-
+   

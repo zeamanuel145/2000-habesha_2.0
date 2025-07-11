@@ -4,11 +4,13 @@ from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone, ServerlessSpec
 from dotenv import load_dotenv
 import os
+
 import logging
 load_dotenv()
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 pc = Pinecone(api_key=PINECONE_API_KEY)
 index_name = "habesha2000"
+
 # pc.create_index(
 #     name=index_name,
 #     dimension=384,

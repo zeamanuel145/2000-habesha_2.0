@@ -1,3 +1,5 @@
+import { Link } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-yellow-800 text-white py-12">
@@ -6,7 +8,13 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-yellow-800 font-bold">H</span>
+                <span>
+                  <img
+                    src="./images/logo.jpg"
+                    alt="Logo"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                </span>{" "}
               </div>
               <div>
                 <h3 className="font-bold">2000 Habesha Cultural</h3>
@@ -16,7 +24,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Contact us</h4>
+            <Link href="../Contact" className="block mb-4">
+              <h4 className="font-semibold text-blue-500 mb-4">Contact us</h4>
+            </Link>
             <p className="text-sm mb-2">habesha2000@gmail.com</p>
             <p className="text-sm">+251 912 838 383</p>
           </div>
@@ -37,23 +47,37 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-yellow-700 mt-8 pt-8 flex justify-between items-center">
-          <p className="text-sm">&copy; 2024 2000 Habesha Cultural Restaurant. All rights reserved.</p>
+          <p className="text-sm">
+            &copy; 2025 2000 Habesha Cultural Restaurant. All rights reserved.
+          </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Instagram
+              <img
+                src="./icons/instagram.svg"
+                alt="Instagram"
+                className="w-8 h-8"
+              />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Facebook
+              <img
+                src="./icons/facebook.svg"
+                alt="Facebook"
+                className="w-8 h-8"
+              />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              Twitter
+              <img src="./icons/x.svg" alt="twitter" className="w-8 h-8" />
             </a>
             <a href="#" className="hover:text-yellow-300 transition-colors">
-              LinkedIn
+              <img
+                src="./icons/linkedin.svg"
+                alt="LinkedIn"
+                className="w-8 h-8"
+              />
             </a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
