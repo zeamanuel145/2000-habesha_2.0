@@ -10,7 +10,7 @@ export default function Hero({ onReservationClick }) {
           <p className="text-lg mb-4">Welcome to</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">2000 Habesha Cultural Restaurant</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Authentic Ethiopian Experience in the Heart of Addis Ababa</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col-2 sm:flex-row gap-4 justify-center">
             <button
               onClick={onReservationClick}
               className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
