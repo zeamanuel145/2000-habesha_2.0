@@ -184,6 +184,4 @@ def initialize_chatbot_agent() -> AgentExecutor:
     except Exception as e:
         logger.error(f"Failed to initialize chatbot agent. \n{e}", exc_info=True)
         raise RuntimeError(f"Could not create chatbot agent. \n{e}")
-    
-    
-   
+
