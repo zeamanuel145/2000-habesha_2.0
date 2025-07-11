@@ -155,13 +155,13 @@ export default function ReservationModal({ onClose }) {
                 className="w-full p-3 rounded-lg bg-white/20 backdrop-blur-sm text-white border border-white/30"
                 required
               >
-                <option value="">Choose Time</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="13:00">1:00 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="18:00">6:00 PM</option>
-                <option value="19:00">7:00 PM</option>
-                <option value="20:00">8:00 PM</option>
+                <option className="text-gray-500" value="">Choose Time</option>
+                <option className="text-gray-500" value="12:00">12:00 PM</option>
+                <option className="text-gray-500" value="13:00">1:00 PM</option>
+                <option className="text-gray-500" value="14:00">2:00 PM</option>
+                <option className="text-gray-500" value="18:00">6:00 PM</option>
+                <option className="text-gray-500" value="19:00">7:00 PM</option>
+                <option className="text-gray-500" value="20:00">8:00 PM</option>
               </select>
             </div>
 
