@@ -27,13 +27,11 @@ export default function Header({ onReservationClick }) {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-24">
           {[
             { label: "Home", path: "/" },
             { label: "Menu", path: "/menu" },
-            { label: "Signature Dishes", path: "/signature-dishes" },
-            { label: "Reservation", path: "/reservation" },
-            { label: "Chatbot", path: "/chatbot" },
+            { label: "Drinks", path: "/Drinks" },
             { label: "Contact", path: "/contact" },
           ].map(({ label, path }) => (
             <Link
@@ -81,8 +79,6 @@ export default function Header({ onReservationClick }) {
             { label: "Home", path: "/" },
             { label: "Menu", path: "/menu" },
             { label: "Signature Dishes", path: "/signature-dishes" },
-            { label: "Reservation", path: "/reservation" },
-            { label: "Chatbot", path: "/chatbot" },
             { label: "Contact", path: "/contact" },
           ].map(({ label, path }) => (
             <Link
