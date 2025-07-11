@@ -19,7 +19,6 @@ export default function Header({ onReservationClick }) {
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
               <span>
-                {" "}
                 <img
                   src="./images/logo.jpg"
                   alt="Logo"
