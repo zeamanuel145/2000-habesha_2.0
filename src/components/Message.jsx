@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Message({ onReservationClick }) {
   return (
     <section className="relative w-full h-100 flex">
