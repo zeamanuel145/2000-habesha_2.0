@@ -1,10 +1,10 @@
-#Habesha Cultural Restaurant Chatbot Backend (FastAPI)
+# Habesha Cultural Restaurant Chatbot Backend (FastAPI)
 This repository contains the FastAPI backend for the "2000 Habesha Cultural Restaurant" chatbot. It is responsible for processing user queries, interacting with the Pinecone vector database for retrieval, and leveraging Google Gemini 2.0 Flash for generating conversational responses.
 
-##Deployed backend URL: 
+### Deployed backend URL: 
 https://two000-habesha-2-0.onrender.com
 
-#Features
+## Features
 - Intelligent Q&A: Answers questions about restaurant's details, menu, reservations and more
 Retrieval Augmented Generation (RAG): Integrates with Pinecone for factual information retrieval to enhance LLM responses.
 
@@ -17,7 +17,7 @@ Retrieval Augmented Generation (RAG): Integrates with Pinecone for factual infor
 #Setup and Local Development
 Follow these instructions to set up and run the backend locally.
 
-##Prerequisites
+### Prerequisites
 - Python 3.10+
 - Docker(for building and running the Docker image)
 - A Google Gemini API key
@@ -40,12 +40,12 @@ First install all requirements using:
 Then run:
 `uvicorn src.main:app --reload --host 0.0.0.0 --port 8000`
 
-#API Documentation
+# API Documentation
 The FastAPI application automatically generates interactive API documentation.
 
 Swagger UI: Access the API documentation at http://localhost:8000/docs when running locally.
 
-##Endpoints
+## Endpoints
 `POST /chat`: The primary endpoint for chatbot interaction.
 - Request Body:
 ```
@@ -69,7 +69,7 @@ Swagger UI: Access the API documentation at http://localhost:8000/docs when runn
 ```
 Functionality: Processes the user's message, retrieves relevant information from Pinecone, queries the Google Gemini 2.0 Flash model, and returns a comprehensive response including updated chat history. All API endpoints are designed to respond without errors, and the model loads successfully on startup.
 
-#☁️ Deployment Guide (Render)
+# ☁️ Deployment Guide (Render)
 This backend is designed for deployment as a Web Service on Render.
 
 Prepare your Backend Repository:
