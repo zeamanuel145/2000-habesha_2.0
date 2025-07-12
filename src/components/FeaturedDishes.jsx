@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { menuItems } from "../data/menuData";
+import Message from "./Message";
 
 export default function FeaturedDishes() {
   const featuredItems = menuItems.slice(0, 6);
@@ -75,6 +76,9 @@ export default function FeaturedDishes() {
             </Link>
           ))}
         </div>
+      </div>
+      <div className="mt-16">
+        <Message onReservationClick={() => setShowReservation(true)} />
       </div>
     </section>
   );
