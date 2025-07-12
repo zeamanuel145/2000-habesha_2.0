@@ -10,16 +10,12 @@ services:
       - "8000:8000" # Map host port 8000 to container port 8000
     environment:
       - PINECONE_API_KEY=${PINECONE_API_KEY}
-      - OLLAMA_API_URL=http://ollama_server:11434/api/generate
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     volumes:
       # Mount your local 'chatbot' directory (containing src and restaurant_details)
       # This allows for live code changes without rebuilding the image during development.
       # For production-like local testing, you might remove this volume.
       - ./chatbot:/app/chatbot:rw # 'rw' for read/write, allowing code changes
-    depends_on:
-      # Ensure ollama_server starts and passes its health check before fastapi_app starts.
-      ollama_server:
-        condition: service_healthy
     # Healthcheck for the FastAPI app itself
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
@@ -30,38 +26,5 @@ services:
     # The CMD in your FastAPI Dockerfile is now perfect for startup.
     restart: unless-stopped # Automatically restart if it stops unexpectedly
 
-  # --- Ollama Server Service ---
-  ollama_server:
-    image: ollama/ollama:latest # Use the official Ollama Docker image
-    ports:
-      - "11434:11434" # Map host port 11434 to container port 11434
-    volumes:
-      # Persist Ollama models and data outside the container
-      # This prevents re-downloading models every time the container restarts
-      - ollama_data:/root/.ollama
-    restart: unless-stopped
-    healthcheck: # Check if Ollama server is ready before FastAPI app starts
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 60s # CRUCIAL: Give Ollama enough time to download models on first run
-
-  # --- Redis Service (Optional, uncomment if you re-add rate limiting) ---
-  # redis_db:
-  #   image: redis/redis-stack-server:latest
-  #   ports:
-  #     - "6379:6379"
-  #   volumes:
-  #     - redis_data:/data
-  #   restart: unless-stopped
-  #   healthcheck:
-  #     test: ["CMD", "redis-cli", "ping"]
-  #     interval: 5s
-  #     timeout: 3s
-  #     retries: 5
-
-volumes:
-  # Define named volumes for persisting Ollama and Redis data
-  ollama_data:
-  # redis_data: # Uncomment if using Redis
+# volumes:
+  
