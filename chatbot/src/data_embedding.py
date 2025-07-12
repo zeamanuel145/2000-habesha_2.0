@@ -1,7 +1,7 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 import logging
-from pdf_loaders import extacted_pdf_text
+from pdf_loaders import load_pdfs
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -21,7 +21,7 @@ def pdf_text_to_chunks(extracted_pdf_text):
         raise RuntimeError(f"Failed to create text chunks: {e}")
 
 
-text_chunks = pdf_text_to_chunks(extracted_pdf_text=extacted_pdf_text)
+# text_chunks = pdf_text_to_chunks(extracted_pdf_text=extacted_pdf_text)
 
 try:
     embeddings = HuggingFaceEmbeddings(

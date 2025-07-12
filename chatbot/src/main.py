@@ -1,4 +1,4 @@
-from fastapi import FastAPI,HTTPException, Request, status
+from fastapi import FastAPI,HTTPException, status
 from typing import Dict, Any
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -6,7 +6,7 @@ import logging
 import uuid
 import asyncio
 from chatbot import initialize_chatbot_agent
-from models import *
+from models import ChatMessage, ChatRequest, ChatResponse, HistoryResponse
 
 
 logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', handlers=[logging.StreamHandler()])
@@ -47,7 +47,7 @@ async def chat_endpoint(request: ChatRequest):
     user_message = request.message #This is the user's message
 
     if session_id not in active_sessions:
-        print("Creating a new storage for session ID {session_id}")
+        logger.info(f"Creating a new storage for session ID {session_id}")
         try:
             active_sessions[session_id] = initialize_chatbot_agent()
         except Exception as e:
@@ -100,7 +100,7 @@ async def get_chat_history(session_id: str):
         logger.info(f"Successfully received history for session {session_id} ")
         return HistoryResponse(session_id=session_id, chat_history=formatted_history)
     except Exception as e:
-        logger.error(f"Error retrieving history for session {session_id} : {e}")
+        logger.error(f"Error retrieving history for session {session_id} : {e}",exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve chat history due to internal error: {e}"
