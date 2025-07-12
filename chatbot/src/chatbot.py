@@ -21,9 +21,10 @@ class CustomOllamaLLM(LLM):
 
     generation_options: dict = {
         "temperature" : 0.0,
-        "top_p": 1,
+        "top_p": 0.1,
         "stop": ["\nObservation:", "\nFinal Answer:"],
-        "repeat_penalty": 1.1
+        "repeat_penalty": 1.1,
+        "n_predict":512
     }
 
     @property
@@ -77,23 +78,22 @@ Answer:
 RAG_TOOL_PROMPT = PromptTemplate(template=RAG_TOOL_PROMPT_TEMPLATE, input_variables=["context", "question"])
 
 #Prompt template for the agent
-AGENT_PROMPT_TEMPLATE = """
-YOU ARE HABESHA, a friendly, humble, welcoming, sincere, and respectful chatbot assistant for 2000 Habesha Cultural Restaurant. Your primary goal is to enhance user experience by answering questions about the restaurant.
 
+AGENT_PROMPT_TEMPLATE = """
+You are an AI assistant.
 You have access to the following tools:
 {tools}
 
 Use the following format:
 
 Question: the input question you must answer
-Thought: you should always think about what to do
+Thought: You must always think step-by-step about what to do next.
 Action: the action to take, should be one of [{tool_names}]
 Action Input: the input to the action
 Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can repeat N times)
-Thought: I now know the final answer
-
-Final Answer: the final answer to the original input question
+... (this Thought/Action/Action Input/Observation can repeat multiple times if needed)
+Thought: I now know the final answer.
+Final Answer: the final answer to the original input question.
 
 Begin!
 

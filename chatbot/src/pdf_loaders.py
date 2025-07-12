@@ -26,5 +26,5 @@ def load_pdfs(pdf_root_directory: str):
         raise RuntimeError(f"Failed to load PDF documents: {e}")
 
     
-directory = "../restaurant_details"
-extacted_pdf_text = load_pdfs(directory)
+# directory = "../restaurant_details"
+# extacted_pdf_text = load_pdfs(directory)
