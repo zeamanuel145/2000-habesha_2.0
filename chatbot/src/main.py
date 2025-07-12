@@ -27,7 +27,8 @@ app = FastAPI(title="2000Habesha Restaurant Chatbot API",
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:8000",
-                   "http://localhost:11434"],
+                   "http://localhost:11434",
+                   "https://two000-habesha-2-0.onrender.com"],
     allow_credentials=True,
     allow_headers = ["*"],
     allow_methods=["GET","POST"]
