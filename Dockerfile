@@ -32,4 +32,4 @@ EXPOSE 8000
 # --host 0.0.0.0 makes the server accessible from outside the container.
 # --port 8000 specifies the port.
 # Note: We remove --reload for production containers as it's for development.
-CMD ["uvicorn", "chatbot.src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn chatbot.src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
