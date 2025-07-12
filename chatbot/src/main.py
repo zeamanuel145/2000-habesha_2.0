@@ -28,7 +28,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:8000",
                    "http://localhost:11434",
-                   "https://two000-habesha-2-0.onrender.com"],
+                   "http://localhost:8000/chat"
+                   "https://two000-habesha-2-0.onrender.com",
+                   "https://2000-habesh.netlify.app/"
+                   ],
     allow_credentials=True,
     allow_headers = ["*"],
     allow_methods=["GET","POST"]
