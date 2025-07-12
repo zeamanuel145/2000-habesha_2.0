@@ -1,0 +1,30 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "Natnael-branch",
+    "chatbot",
+    "dev-feedback",
+    "feature/add-images",
+    "feature/mods",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "Natnael-branch": "main",
+    "chatbot": "main",
+    "dev-feedback": "main",
+    "feature/add-images": "main",
+    "feature/mods": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "Natnael-branch",
+    "chatbot",
+    "dev-feedback",
+    "feature/add-images",
+    "feature/mods",
+    "origin"
+  ]
+}
