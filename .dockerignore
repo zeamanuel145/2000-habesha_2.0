@@ -9,6 +9,7 @@ __pycache__/
 venv/
 .venv/
 *.log
+.pytest_cache/
 
 # Ignore Node.js/Frontend related files if not needed in the backend image
 node_modules/
@@ -18,3 +19,6 @@ build/
 dist/
 .vscode/ # VS Code configuration
 *.log
+# Docker files
+docker-compose.yml
+Dockerfile.ollama

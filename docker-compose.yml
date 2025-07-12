@@ -5,55 +5,61 @@ services:
   habesha_chatbot_api:
     build:
       context: . # Build from the current directory (where Dockerfile is)
-      dockerfile: Dockerfile # Use the Dockerfile we just created
+      dockerfile: Dockerfile # Use the Dockerfile for FastAPI (your good one!)
     ports:
       - "8000:8000" # Map host port 8000 to container port 8000
     environment:
-      # Pass your Pinecone API key securely as an environment variable.
-      # Docker Compose will read this from your host's environment or a .env file.
-      # IMPORTANT: Create a .env file in the SAME directory as docker-compose.yml
-      # and put PINECONE_API_KEY=your_key_here in it.
       - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - OLLAMA_API_URL=http://ollama_server:11434/api/generate
     volumes:
-      # Mount your local PDF directory into the container.
-      # This ensures your RAG system can access the PDFs.
-      # Adjust the path if your 'restaurant_details' folder is not directly under 'chatbot'.
-      - ./chatbot/restaurant_details:/app/chatbot/restaurant_details:ro
+      # Mount your local 'chatbot' directory (containing src and restaurant_details)
+      # This allows for live code changes without rebuilding the image during development.
+      # For production-like local testing, you might remove this volume.
+      - ./chatbot:/app/chatbot:rw # 'rw' for read/write, allowing code changes
     depends_on:
-      # Ensure Ollama is running before starting the FastAPI app.
-      - ollama_server
-      # If you re-add Redis for rate limiting, uncomment this:
-      # - redis_db
-    # Command to run the FastAPI application.
-    # This overrides the CMD in the Dockerfile if specified here.
-    # For development, you might want --reload, but for production, remove it.
-    command: ["uvicorn", "chatbot.src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+      # Ensure ollama_server starts and passes its health check before fastapi_app starts.
+      ollama_server:
+        condition: service_healthy
+    # Healthcheck for the FastAPI app itself
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s # Give FastAPI time to initialize before checking
+    # The CMD in your FastAPI Dockerfile is now perfect for startup.
     restart: unless-stopped # Automatically restart if it stops unexpectedly
 
-  # --- Ollama Server Service (Optional, but recommended for self-contained setup) ---
+  # --- Ollama Server Service ---
   ollama_server:
     image: ollama/ollama:latest # Use the official Ollama Docker image
     ports:
       - "11434:11434" # Map host port 11434 to container port 11434
     volumes:
       # Persist Ollama models and data outside the container
+      # This prevents re-downloading models every time the container restarts
       - ollama_data:/root/.ollama
-    command: ["serve"] # Command to start the Ollama server
     restart: unless-stopped
     healthcheck: # Check if Ollama server is ready before FastAPI app starts
       test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 60s # CRUCIAL: Give Ollama enough time to download models on first run
 
   # --- Redis Service (Optional, uncomment if you re-add rate limiting) ---
   # redis_db:
-  #   image: redis/redis-stack-server:latest # Use a Redis image
+  #   image: redis/redis-stack-server:latest
   #   ports:
-  #     - "6379:6379" # Map host port 6379 to container port 6379
+  #     - "6379:6379"
   #   volumes:
-  #     - redis_data:/data # Persist Redis data
+  #     - redis_data:/data
   #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 5s
+  #     timeout: 3s
+  #     retries: 5
 
 volumes:
   # Define named volumes for persisting Ollama and Redis data
