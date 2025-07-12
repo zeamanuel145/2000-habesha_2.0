@@ -10,7 +10,7 @@ export default function ChatBox() {
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
 
-  const BACKEND_URL = "http://localhost:8000";
+  const BACKEND_URL = "https://two000-habesha-2-0.onrender.com";
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
