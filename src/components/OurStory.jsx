@@ -2,14 +2,16 @@ export default function OurStory() {
   return (
     <section
       id="story"
-      className="bg-[#f8f1e9] py-20 px-4 text-[#2b1608] shadow-lg"
+      className="bg-[#f8f1e9] py-20 px-4 text-[#2b1608] shadow-lg dark:bg-gray-900 dark:text-whites"
     >
       <div className="max-w-7xl mx-auto space-y-16 shadow-amber-400">
         {/* Top section */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left text */}
           <div>
-            <h2 className="text-4xl font-bold mb-4">Our Story</h2>
+            <h2 className="text-4xl font-bold mb-4 dark:text-white">
+              Our Story
+            </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
               Our journey began in the heart of Addis Ababa, where family
               traditions, love for spices, and the joy of sharing meals inspired
@@ -44,7 +46,7 @@ export default function OurStory() {
 
           {/* Right text */}
           <div>
-            <h3 className="text-xl font-bold text-amber-800 mb-4">
+            <h3 className="text-xl font-bold text-amber-800 mb-4 dark:text-white">
               What Makes Us Unique:
             </h3>
             <p className="text-gray-700 leading-relaxed">
