@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const images = [
-  "../../public/images/Hero-img1.png",
-  "../../public/images/Hero-img2.png",
-  "../../public/images/Hero-img3.png", // ← Add your third image here
+  "./images/Hero-img1.png",
+  "./images/Hero-img2.png",
+  "./images/Hero-img3.png",
 ];
 
 export default function Hero({ onReservationClick }) {
