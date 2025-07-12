@@ -8,7 +8,8 @@ WORKDIR /app
 
 # Copy the requirements.txt file first to leverage Docker's build cache.
 # This means if requirements.txt doesn't change, these layers won't be rebuilt.
-COPY requirements.txt .
+# AFTER (CORRECT):
+COPY chatbot/requirements.txt .
 
 # Install Python dependencies.
 # Using --no-cache-dir to avoid storing pip's cache in the image, reducing size.
