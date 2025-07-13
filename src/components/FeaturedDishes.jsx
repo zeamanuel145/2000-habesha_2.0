@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { menuItems } from "../data/menuData";
-import Message from "./Message";
+
 
 export default function FeaturedDishes() {
   const featuredItems = menuItems.slice(0, 6);
@@ -53,7 +53,7 @@ export default function FeaturedDishes() {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
             >
               <img
-                src={dish.image || "/placeholder.svg"}
+                src={dish.image || "/placeholder.png"}
                 alt={dish.name}
                 className="w-full h-52 object-cover"
               />
@@ -77,9 +77,7 @@ export default function FeaturedDishes() {
           ))}
         </div>
       </div>
-      <div className="mt-16">
-        <Message onReservationClick={() => setShowReservation(true)} />
-      </div>
+
     </section>
   );
 }
