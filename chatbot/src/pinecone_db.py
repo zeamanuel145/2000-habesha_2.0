@@ -1,6 +1,5 @@
 from langchain_pinecone import PineconeVectorStore
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from pinecone import Pinecone
 from dotenv import load_dotenv
 import os

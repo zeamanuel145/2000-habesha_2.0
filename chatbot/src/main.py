@@ -3,6 +3,7 @@ from typing import Dict, Any
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import logging
+import os
 import uuid
 import asyncio
 from chatbot import initialize_chatbot_agent
@@ -110,5 +111,6 @@ async def get_chat_history(session_id: str):
             detail=f"Failed to retrieve chat history due to internal error: {e}"
         )
 
-
-
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
