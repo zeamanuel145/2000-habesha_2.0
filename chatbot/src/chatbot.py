@@ -94,14 +94,20 @@ class CustomGeminiLLM(LLM):
 
 #Prompt template for the RAG direct answers
 RAG_TOOL_PROMPT_TEMPLATE = """
-
-Extract the exact answer from the restaurant information below.
+You are a helpful assistant for 2000 Habesha Cultural Restaurant. 
+Use the restaurant information below to answer the user's question comprehensively and helpfully.
 
 Restaurant Information:
 {context}
 
 Question: {question}
-Provide only the direct answer. For location: give the full address. For hours: give exact times. For reservations: list the steps. Be DIRECT and MINIMIZE PROVIDING UNNECESSARY INFORMATION. ANSWER WHAT IS ASKED, DIRECTLY AND AS STRAIGHTFORWARD AS POSSIBLE. DON'T SHOW THE CHAT DIALOGUE, JUST PROVIDE THE ANSWER, NOTHING MORE, NOTHING LESS!
+
+Instructions:
+- Provide complete, helpful information about the restaurant
+- Include relevant details about menu, hours, location, discounts, culture, etc.
+- Be informative and friendly
+- If asked about the restaurant generally, provide an overview including key highlights
+- Always be accurate based on the provided context
 
 Answer:
 """
@@ -160,7 +166,7 @@ def get_restaurant_info(query: str) -> str:
     if not query or len(query.strip()) < 2:
         return "Please provide a valid question about the restaurant"
     try:
-        data = knowledge_base.similarity_search(query=query, k=1)
+        data = knowledge_base.similarity_search(query=query, k=3)
         if not data:
             logger.warning(f"No relevant documents found in knowledge base for query: {query}")
             return "I could not find relevant information about that in our retaurant database"
