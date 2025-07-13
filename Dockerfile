@@ -46,4 +46,4 @@ EXPOSE 8000
 # Command to run the FastAPI application using Uvicorn.
 # The path to main.py is correctly specified relative to the /app directory
 # because 'chatbot' was copied into '/app/chatbot'.
-CMD ["uvicorn", "chatbot.src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/bin/bash", "-c", "uvicorn src.main:app --host 0.0.0.0 --port $PORT --app-dir /app/"]
