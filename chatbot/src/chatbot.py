@@ -1,5 +1,5 @@
 from langchain.prompts import PromptTemplate
-from pinecone_db import knowledge_base
+from .pinecone_db import knowledge_base
 from langchain.memory import ConversationBufferMemory
 from langchain.agents import AgentExecutor, Tool,  create_react_agent
 from typing import Optional, Dict, Any
