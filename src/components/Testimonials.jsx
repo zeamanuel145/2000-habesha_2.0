@@ -15,23 +15,30 @@ export default function Testimonials() {
       rating: 5,
       text: "Feeling closer, the food reminds me of back home and the traditional music and dance performances make it even more special. The kitfo was prepared perfectly and the vegetarian combo was outstanding.",
     },
-  ]
+  ];
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-800">
+    <section className="py-16 bg-[#fcf8f4] dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className="text-3xl font-bold text-center mb-12 text-[#4b2e0e] dark:text-white">
           Testimonials and Feedbacks
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex flex-col md:flex-row md:justify-center gap-8 flex-wrap items-start">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-yellow-800 text-white p-6 rounded-lg">
-              <div className="text-4xl mb-4">"</div>
-              <p className="mb-6 text-sm leading-relaxed">{testimonial.text}</p>
+            <div
+              key={index}
+              className={`bg-[#844c00] text-white p-6 rounded-lg shadow-md w-[300px] min-h-[340px] mx-auto ${
+                index === 1 ? "mt-12" : index === 2 ? "mt-6" : ""
+              }`}
+            >
+              <div className="text-4xl mb-4">“</div>
+              <p className="mb-6 text-sm leading-relaxed h-[160px] overflow-hidden">
+                {testimonial.text}
+              </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
-                  <span className="text-yellow-800 font-bold text-sm">
+                  <span className="text-[#844c00] font-bold text-sm">
                     {testimonial.name
                       .split(" ")
                       .map((n) => n[0])
@@ -40,7 +47,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-yellow-400 text-sm">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <span key={i}>★</span>
                     ))}
@@ -52,5 +59,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }
