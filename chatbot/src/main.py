@@ -24,18 +24,17 @@ app = FastAPI(title="2000Habesha Restaurant Chatbot API",
               description="API for 2000Habesha Cultural Restaurant",
               version="1.0.0",
               lifespan=lifespan)
-
+origins = [
+    "https://2000-habesh.netlify.app",  # Your Netlify frontend URL
+    "http://localhost:3000",            # Common for local frontend development (e.g., React dev server)
+    "http://127.0.0.1:8000",            # For local backend testing if your frontend is also local
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000",
-                   "http://localhost:11434",
-                   "http://localhost:8000/chat",
-                   "https://two000-habesha-2-0.onrender.com",
-                   "https://2000-habesh.netlify.app/"
-                   ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_headers = ["*"],
-    allow_methods=["GET","POST"]
+    allow_methods=["*"]
 )
 
 active_sessions: Dict[str, Any] = {} #Will store each active chat session's chatbot brain
