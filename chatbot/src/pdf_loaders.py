@@ -26,5 +26,6 @@
 #         raise RuntimeError(f"Failed to load PDF documents: {e}")
 
     
-# # directory = "../restaurant_details"
-# # extacted_pdf_text = load_pdfs(directory)
+# directory = "../restaurant_details"
+# extracted_pdf_text = load_pdfs(directory)
+# # print(extracted_pdf_text)

@@ -1,6 +1,7 @@
 from langchain_pinecone import PineconeVectorStore
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from pinecone import Pinecone
+# from data_embedding import text_chunks, embeddings
 from dotenv import load_dotenv
 import os
 import logging
@@ -13,8 +14,11 @@ logger = logging.getLogger(__name__)
 try:
     load_dotenv()
     PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
     if not PINECONE_API_KEY:
         raise ValueError("PINECONE_API_KEY environment variable not set. Please set it in your .env file.")
+    if not GOOGLE_API_KEY:
+        raise ValueError("GOOGLE_API_KEY environment variable not set. Please set it to your .env file")
 
     pc = Pinecone(api_key=PINECONE_API_KEY)
     logger.info("Pinecone client initialized successfully.")
@@ -23,10 +27,12 @@ except Exception as e:
     raise RuntimeError(f"Failed to initialize Pinecone: {e}")
 
 index_name = "habesha2000"
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
-    encode_kwargs={"normalize_embeddings": True}
-)# try:
+embedding_dimension = 768
+embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=GOOGLE_API_KEY
+    )
+# try:
 #     existing_indexes = pc.list_indexes().names()
 #     logger.info(f"Existing Pinecone indexes: {existing_indexes}")
 
@@ -42,11 +48,6 @@ embeddings = HuggingFaceEmbeddings(
 #             logger.info(f"Waiting for index '{index_name}' to be ready...")
 #             time.sleep(1)
 #         logger.info(f"Pinecone index '{index_name}' created and ready.")
-
-#         pdf_root_directory = "../restaurant_details" 
-#         extracted_pdf_text = load_pdfs(pdf_root_directory) 
-#         text_chunks = pdf_text_to_chunks(extracted_pdf_text)
-
 #         logger.info(f"Populating Pinecone index '{index_name}' with {len(text_chunks)} documents...")
 #         PineconeVectorStore.from_texts(
 #             [t.page_content for t in text_chunks],
@@ -56,6 +57,8 @@ embeddings = HuggingFaceEmbeddings(
 #         logger.info(f"Pinecone index '{index_name}' populated successfully.")
 #     else:
 #         logger.info(f"Pinecone index '{index_name}' already exists. Continuing")
+# except:
+#     logger.error("Error accessing Pinecone Index")
 
 try:
     knowledge_base = PineconeVectorStore.from_existing_index(

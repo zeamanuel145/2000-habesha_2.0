@@ -1,11 +1,20 @@
 # from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from langchain_huggingface import HuggingFaceEmbeddings
+# from langchain_google_genai import GoogleGenerativeAIEmbeddings
+# from pdf_loaders import extracted_pdf_text
+# from dotenv import load_dotenv
 # import logging
-# # from pdf_loaders import load_pdfs
+# import os
+# from pdf_loaders import load_pdfs
 
 # logging.basicConfig(level=logging.INFO,
 #                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 # logger = logging.getLogger(__name__)
+
+# load_dotenv()
+# GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+# if not GOOGLE_API_KEY:
+#     raise ValueError("GOOGLE_API_KEY environment variable not set. Please set it in your .env file.")
+
 
 # #Create text chunks
 # def pdf_text_to_chunks(extracted_pdf_text):
@@ -21,15 +30,16 @@
 #         raise RuntimeError(f"Failed to create text chunks: {e}")
 
 
-# # text_chunks = pdf_text_to_chunks(extracted_pdf_text=extacted_pdf_text)
+# text_chunks = pdf_text_to_chunks(extracted_pdf_text=extracted_pdf_text)
 
 # try:
-#     embeddings = HuggingFaceEmbeddings(
-#         model_name="sentence-transformers/all-MiniLM-L6-v2",
-#         encode_kwargs={"normalize_embeddings": True}
+#     embeddings = GoogleGenerativeAIEmbeddings(
+#         model="models/embedding-001",
+#         google_api_key=GOOGLE_API_KEY
 #     )
 #     query_result = embeddings.embed_query("Hello world")
+#     print(len(query_result))
 #     logger.info(f"Embedding model loaded successfully. Embedding dimension: {len(query_result)}")
 # except Exception as e:
-#     logger.error(f"Error loading HuggingFaceEmbeddings model: {e}", exc_info=True)
+#     logger.error(f"Error loading GoogleGenerativeAI model: {e}", exc_info=True)
 #     raise RuntimeError(f"Failed to load embedding model: {e}")
