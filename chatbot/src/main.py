@@ -6,8 +6,8 @@ import logging
 import os
 import uuid
 import asyncio
-from chatbot import initialize_chatbot_agent
-from models import ChatMessage, ChatRequest, ChatResponse, HistoryResponse
+from .chatbot import initialize_chatbot_agent
+from .models import ChatMessage, ChatRequest, ChatResponse, HistoryResponse
 
 
 logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', handlers=[logging.StreamHandler()])
@@ -29,7 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:8000",
                    "http://localhost:11434",
-                   "http://localhost:8000/chat"
+                   "http://localhost:8000/chat",
                    "https://two000-habesha-2-0.onrender.com",
                    "https://2000-habesh.netlify.app/"
                    ],
