@@ -38,7 +38,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY chatbot/ /app/chatbot/
 
 # Set the PYTHONPATH to include the 'src' directory within 'chatbot'.
-ENV PYTHONPATH=/app/chatbot/src:$PYTHONPATH
+ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Expose the port that FastAPI will run on.
 EXPOSE 8000

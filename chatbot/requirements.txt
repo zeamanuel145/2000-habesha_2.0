@@ -8,7 +8,7 @@ pydantic==2.7.4
 tiktoken==0.7.0
 pinecone-client==4.1.0
 python-multipart==0.0.9
-pypdf==4.2.0
-langchain-huggingface>=0.0.3
-sentence-transformers
 google-generativeai
+langchain-huggingface>=0.0.3
+langchain-google-genai
+
