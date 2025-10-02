@@ -8,5 +8,4 @@ pathlib
 langchain-core
 langchain-groq
 fastapi
-contextlib
 pydantic
