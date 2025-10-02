@@ -4,10 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import logging
 import os
-import uuid
-import asyncio
-from models import ChatMessage, ChatRequest, ChatResponse, HistoryResponse
-from chatbot import assistant
+from .models import ChatMessage, ChatRequest, ChatResponse, HistoryResponse
+from .chatbot import assistant
 
 
 logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', handlers=[logging.StreamHandler()])

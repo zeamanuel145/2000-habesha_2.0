@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 from typing import Optional, Dict, Any
 from langchain.llms.base import LLM
 from dotenv import load_dotenv
-from db_handler import logger, knowledge_base
+from .db_handler import logger, knowledge_base
 import os
 
 load_dotenv()
