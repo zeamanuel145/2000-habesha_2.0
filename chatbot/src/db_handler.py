@@ -59,7 +59,7 @@ try:
         logger.info(f"Pinecone index '{index_name}' does not exist. Creating new index...")
         pc.create_index(
             name=index_name,
-            dimension=768,
+            dimension=1024,
             metric="cosine",
             spec=ServerlessSpec(cloud="aws", region='us-east-1')
         )
@@ -84,7 +84,7 @@ try:
     knowledge_base = PineconeVectorStore.from_existing_index(
         index_name=index_name,
         embedding=embeddings
-    )
+    ).as_retriever()
     logger.info(f"Successfully connected to existing Pinecone index '{index_name}'.")
 except Exception as e:
     logger.exception("Error with Pinecone index...")
