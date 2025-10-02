@@ -6,11 +6,10 @@ export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [inputMessage, setInput] = useState("")
-  const [sessionId, setSessionId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
 
-  const BACKEND_URL = "https://two000-habesha-2-0.onrender.com";
+  const BACKEND_URL = "http://127.0.0.1:8003";
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,33 +39,26 @@ export default function ChatBox() {
     try {
       const response = await fetch(`${BACKEND_URL}/chat`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          message: userMessage,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage }),
       })
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        const errorData = await response.json()
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`)
       }
 
       const data = await response.json()
 
-      if (data.session_id) {
-        setSessionId(data.session_id)
-      }
-
-      const newFormattedMessages = data.chat_history.map((msg, index) => ({
-        id: index + 1,
-        text: msg.text,
-        sender: msg.sender,
-      }));
-      setMessages(newFormattedMessages);
-
+      // Append bot reply directly
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          id: prevMessages.length + 1,
+          text: data.response,
+          sender: "bot",
+        },
+      ])
     } catch (error) {
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -91,7 +83,7 @@ export default function ChatBox() {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
+        <div className="fixed bottom-24 right-6 w-full sm:w-96 max-w-md h-[70vh] max-h-[600px] bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
           <div className="bg-yellow-600 text-white p-4 rounded-t-lg">
             <h3 className="font-semibold">Chat with us</h3>
             <p className="text-sm opacity-90">We're here to help!</p>

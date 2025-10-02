@@ -28,6 +28,8 @@ origins = [
     "https://2000-habesh.netlify.app",
     "http://localhost:3000",            
     "http://127.0.0.1:8000",
+    "http://localhost:5173",
+    "http://127.0.0.1:8003"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -42,7 +44,7 @@ async def root():
     logger.info("Loaded root page")
     return {"message": "Hello! Visit /docs to test various endpoints"}
 
-@app.post("/", response_model=ChatResponse,summary="Send a message to the chatbot and get a response")
+@app.post("/chat", response_model=ChatResponse,summary="Send a message to the chatbot and get a response")
 async def chatbot(request: ChatRequest):
     try:
         response_text = assistant(request.message)
