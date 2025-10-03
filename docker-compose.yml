@@ -1,30 +1,16 @@
-version: '3.8' # Specify the Docker Compose file format version
+version: '3.8'
 
 services:
-  # --- FastAPI Application Service ---
   habesha_chatbot_api:
+    container_name: 2000Habesha
     build:
-      context: . # Build from the current directory (where Dockerfile is)
-      dockerfile: Dockerfile # Use the Dockerfile for FastAPI (your good one!)
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000" # Map host port 8000 to container port 8000
-    environment:
-      - PINECONE_API_KEY=${PINECONE_API_KEY}
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - "8000:8000"
+    env_file:
+      - .env
     volumes:
-      # Mount your local 'chatbot' directory (containing src and restaurant_details)
-      # This allows for live code changes without rebuilding the image during development.
-      # For production-like local testing, you might remove this volume.
-      - ./chatbot:/app/chatbot:rw # 'rw' for read/write, allowing code changes
-    # Healthcheck for the FastAPI app itself
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 20s # Give FastAPI time to initialize before checking
-    # The CMD in your FastAPI Dockerfile is now perfect for startup.
-    restart: unless-stopped # Automatically restart if it stops unexpectedly
-
-# volumes:
+      - ./chatbot:/app/chatbot:rw
+    restart: unless-stopped
   
