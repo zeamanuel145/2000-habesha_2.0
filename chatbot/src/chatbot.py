@@ -10,7 +10,6 @@ from .db_handler import logger, knowledge_base
 import os
 
 load_dotenv()
-import google.generativeai as genai
 
 try:
     llm = ChatGroq(
