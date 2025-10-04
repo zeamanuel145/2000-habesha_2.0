@@ -23,7 +23,7 @@ app = FastAPI(title="2000Habesha Restaurant Chatbot API",
               version="2.0",
               lifespan=lifespan)
 origins = [
-    "https://2000-habesh.netlify.app",
+    "https://2000-habesha.netlify.app",
     "http://localhost:3000",            
     "http://127.0.0.1:8000",
     "http://localhost:5173",
