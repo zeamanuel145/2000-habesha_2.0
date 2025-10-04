@@ -8,42 +8,33 @@ export default function ChatBox() {
   const [inputMessage, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
-  // 1. Create a ref for the input field
-  const inputRef = useRef(null) 
+  const inputRef = useRef(null)
 
-  const BACKEND_URL = "https://two000-habesha-2-0.onrender.com";
+  const BACKEND_URL = "https://two000-habesha-2-0.onrender.com"
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      setMessages([{ id: 1, text: "Hello! How can I help you today?", sender: "bot" }]);
+      setMessages([{ id: 1, text: "Hello! How can I help you today?", sender: "bot" }])
     }
-    // Set focus to the input field when the chat box opens
-    if (isOpen) {
-        inputRef.current?.focus(); 
-    }
-  }, [isOpen, messages.length]);
+    if (isOpen) inputRef.current?.focus()
+  }, [isOpen, messages.length])
 
   const handleSendMessage = async (e) => {
     e.preventDefault()
     if (!inputMessage.trim() || isLoading) return
 
     const userMessage = inputMessage.trim()
-    const newUserMessage = {
-      id: messages.length + 1,
-      text: userMessage,
-      sender: "user",
-    }
+    const newUserMessage = { id: messages.length + 1, text: userMessage, sender: "user" }
 
-    setMessages((prevMessages) => [...prevMessages, newUserMessage])
+    setMessages((prev) => [...prev, newUserMessage])
     setInput("")
     setIsLoading(true)
 
     try {
-      // ... (existing fetch logic remains the same)
       const response = await fetch(`${BACKEND_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -56,64 +47,67 @@ export default function ChatBox() {
       }
 
       const data = await response.json()
-
-      // Append bot reply
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          id: prevMessages.length + 1,
-          text: data.response,
-          sender: "bot",
-        },
-      ])
+      setMessages((prev) => [...prev, { id: prev.length + 1, text: data.response, sender: "bot" }])
     } catch (error) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
+      setMessages((prev) => [
+        ...prev,
         {
-          id: prevMessages.length + 1,
+          id: prev.length + 1,
           text: `Error: Could not connect to the chatbot. Please try again. (${error.message})`,
           sender: "bot",
         },
       ])
     } finally {
       setIsLoading(false)
-      // Focus the input field again after the entire process is complete
-      inputRef.current?.focus(); 
+      inputRef.current?.focus()
     }
   }
 
   return (
     <>
-      {/* ... (button and wrapper code remains the same) */}
+      {/* Floating Button (Always Visible) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-full shadow-lg transition-colors z-40"
+        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-full shadow-lg transition-colors z-50"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
 
+      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-full sm:w-96 max-w-md h-[70vh] max-h-[600px] bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
+        <div
+          className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 
+                     w-[95%] sm:w-[420px] md:w-[380px] 
+                     h-[70vh] sm:h-[550px] 
+                     bg-white dark:bg-gray-800 rounded-lg shadow-2xl 
+                     border border-gray-200 dark:border-gray-700 
+                     flex flex-col z-40 transition-all duration-300"
+        >
+          {/* Header */}
           <div className="bg-yellow-600 text-white p-4 rounded-t-lg">
-            <h3 className="font-semibold">Chat with us</h3>
-            <p className="text-sm opacity-90">We're here to help!</p>
+            <h3 className="font-semibold text-lg text-center">Chat with us</h3>
+            <p className="text-sm opacity-90 text-center">We’re here to help!</p>
           </div>
 
-          <div className="flex-1 p-4 overflow-y-auto space-y-3">
-            {messages.map((message) => (
-                // ... (message rendering code remains the same)
-              <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
+          {/* Messages Section */}
+          <div className="flex-1 p-4 overflow-y-auto space-y-3 scroll-smooth">
+            {messages.map((msg) => (
+              <div
+                key={msg.id}
+                className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+              >
                 <div
-                  className={`max-w-xs p-3 rounded-lg ${
-                    message.sender === "user"
+                  className={`max-w-[80%] sm:max-w-[75%] p-3 rounded-lg text-sm break-words ${
+                    msg.sender === "user"
                       ? "bg-yellow-600 text-white"
                       : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
                   }`}
                 >
-                  <p className="text-sm">{message.text}</p>
+                  {msg.text}
                 </div>
               </div>
             ))}
+
             {isLoading && (
               <div className="flex justify-start">
                 <div className="max-w-xs p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
@@ -121,27 +115,37 @@ export default function ChatBox() {
                 </div>
               </div>
             )}
+
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 dark:border-gray-700">
+          {/* Input Section */}
+          <form
+            onSubmit={handleSendMessage}
+            className="p-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+          >
             <div className="flex space-x-2">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={isLoading ? "Waiting for response..." : "Type your message..."}
-                className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg 
+                           focus:outline-none focus:ring-2 focus:ring-yellow-500 
+                           dark:bg-gray-700 dark:text-white text-sm"
                 disabled={isLoading}
-                // 2. Attach the ref to the input field
-                ref={inputRef} 
+                ref={inputRef}
               />
               <button
                 type="submit"
-                className="bg-yellow-600 hover:bg-yellow-700 text-white p-2 rounded-lg transition-colors"
+                className="bg-yellow-600 hover:bg-yellow-700 text-white p-2 rounded-lg transition-colors disabled:opacity-50"
                 disabled={isLoading}
               >
-                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send size={16} />}
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Send size={16} />
+                )}
               </button>
             </div>
           </form>
