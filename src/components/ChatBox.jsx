@@ -8,8 +8,10 @@ export default function ChatBox() {
   const [inputMessage, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
+  // 1. Create a ref for the input field
+  const inputRef = useRef(null) 
 
-  const BACKEND_URL = "http://127.0.0.1:8003";
+  const BACKEND_URL = "https://two000-habesha-2-0.onrender.com";
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -18,6 +20,10 @@ export default function ChatBox() {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([{ id: 1, text: "Hello! How can I help you today?", sender: "bot" }]);
+    }
+    // Set focus to the input field when the chat box opens
+    if (isOpen) {
+        inputRef.current?.focus(); 
     }
   }, [isOpen, messages.length]);
 
@@ -37,6 +43,7 @@ export default function ChatBox() {
     setIsLoading(true)
 
     try {
+      // ... (existing fetch logic remains the same)
       const response = await fetch(`${BACKEND_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -50,7 +57,7 @@ export default function ChatBox() {
 
       const data = await response.json()
 
-      // Append bot reply directly
+      // Append bot reply
       setMessages((prevMessages) => [
         ...prevMessages,
         {
@@ -70,11 +77,14 @@ export default function ChatBox() {
       ])
     } finally {
       setIsLoading(false)
+      // Focus the input field again after the entire process is complete
+      inputRef.current?.focus(); 
     }
   }
 
   return (
     <>
+      {/* ... (button and wrapper code remains the same) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-full shadow-lg transition-colors z-40"
@@ -91,6 +101,7 @@ export default function ChatBox() {
 
           <div className="flex-1 p-4 overflow-y-auto space-y-3">
             {messages.map((message) => (
+                // ... (message rendering code remains the same)
               <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-xs p-3 rounded-lg ${
@@ -122,6 +133,8 @@ export default function ChatBox() {
                 placeholder={isLoading ? "Waiting for response..." : "Type your message..."}
                 className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
                 disabled={isLoading}
+                // 2. Attach the ref to the input field
+                ref={inputRef} 
               />
               <button
                 type="submit"
