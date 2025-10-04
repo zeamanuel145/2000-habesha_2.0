@@ -6,9 +6,10 @@ export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [inputMessage, setInput] = useState("")
-  const [sessionId, setSessionId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
+  // 1. Create a ref for the input field
+  const inputRef = useRef(null) 
 
   const BACKEND_URL = "https://two000-habesha-2-0.onrender.com";
 
@@ -19,6 +20,10 @@ export default function ChatBox() {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([{ id: 1, text: "Hello! How can I help you today?", sender: "bot" }]);
+    }
+    // Set focus to the input field when the chat box opens
+    if (isOpen) {
+        inputRef.current?.focus(); 
     }
   }, [isOpen, messages.length]);
 
@@ -38,35 +43,29 @@ export default function ChatBox() {
     setIsLoading(true)
 
     try {
+      // ... (existing fetch logic remains the same)
       const response = await fetch(`${BACKEND_URL}/chat`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          message: userMessage,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage }),
       })
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        const errorData = await response.json()
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`)
       }
 
       const data = await response.json()
 
-      if (data.session_id) {
-        setSessionId(data.session_id)
-      }
-
-      const newFormattedMessages = data.chat_history.map((msg, index) => ({
-        id: index + 1,
-        text: msg.text,
-        sender: msg.sender,
-      }));
-      setMessages(newFormattedMessages);
-
+      // Append bot reply
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          id: prevMessages.length + 1,
+          text: data.response,
+          sender: "bot",
+        },
+      ])
     } catch (error) {
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -78,11 +77,14 @@ export default function ChatBox() {
       ])
     } finally {
       setIsLoading(false)
+      // Focus the input field again after the entire process is complete
+      inputRef.current?.focus(); 
     }
   }
 
   return (
     <>
+      {/* ... (button and wrapper code remains the same) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-full shadow-lg transition-colors z-40"
@@ -91,7 +93,7 @@ export default function ChatBox() {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
+        <div className="fixed bottom-24 right-6 w-full sm:w-96 max-w-md h-[70vh] max-h-[600px] bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
           <div className="bg-yellow-600 text-white p-4 rounded-t-lg">
             <h3 className="font-semibold">Chat with us</h3>
             <p className="text-sm opacity-90">We're here to help!</p>
@@ -99,6 +101,7 @@ export default function ChatBox() {
 
           <div className="flex-1 p-4 overflow-y-auto space-y-3">
             {messages.map((message) => (
+                // ... (message rendering code remains the same)
               <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-xs p-3 rounded-lg ${
@@ -130,6 +133,8 @@ export default function ChatBox() {
                 placeholder={isLoading ? "Waiting for response..." : "Type your message..."}
                 className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
                 disabled={isLoading}
+                // 2. Attach the ref to the input field
+                ref={inputRef} 
               />
               <button
                 type="submit"
