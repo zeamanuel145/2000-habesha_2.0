@@ -13,9 +13,9 @@ class ChatRequest(BaseModel):
 
 # Model for the response we send back after a chat message
 class ChatResponse(BaseModel):
-    session_id: str = Field(...,description="The ID of the chat session")
+    # session_id: str = Field(...,description="The ID of the chat session")
     response: str = Field(...,description="The chatbot's reponse.")
-    chat_history: List[ChatMessage] = Field(...,description="The updated conversation history for the session")
+    # chat_history: List[ChatMessage] = Field(...,description="The updated conversation history for the session")
 
 # Model for the response when someone asks for chat history
 class HistoryResponse(BaseModel):

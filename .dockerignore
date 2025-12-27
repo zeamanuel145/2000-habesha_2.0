@@ -1,12 +1,14 @@
 # Ignore Git-related files
-.git
+.git/
 .gitignore
 
 # Ignore Python-related files
 __pycache__/
 *.pyc
+*.pyo
 *.env # Keep your .env file out of the image for security!
 venv/
+env/
 .venv/
 *.log
 .pytest_cache/
@@ -21,4 +23,4 @@ dist/
 *.log
 # Docker files
 docker-compose.yml
-Dockerfile.ollama
+Dockerfile

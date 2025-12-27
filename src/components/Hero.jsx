@@ -6,7 +6,8 @@ const images = [
   "./images/Hero-img1.png",
   "./images/Hero-img2.png",
   "./images/Hero-img3.png",
-  "./images/masiko.png",
+
+
 ];
 
 export default function Hero({ onReservationClick }) {
