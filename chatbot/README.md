@@ -1,5 +1,5 @@
 # Habesha Cultural Restaurant Chatbot Backend (FastAPI)
-This repository contains the FastAPI backend for the "2000 Habesha Cultural Restaurant" chatbot. It is responsible for processing user queries, interacting with the Pinecone vector database for retrieval, and leveraging Google Gemini 2.0 Flash for generating conversational responses.
+This repository contains the FastAPI backend for the "Tiytu Restorant Cultural Restaurant" chatbot. It is responsible for processing user queries, interacting with the Pinecone vector database for retrieval, and leveraging Google Gemini 2.0 Flash for generating conversational responses.
 
 ### Deployed backend URL: 
 https://two000-habesha-2-0.onrender.com

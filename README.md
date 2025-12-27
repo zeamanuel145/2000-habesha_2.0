@@ -1,4 +1,4 @@
-Here’s an enhanced `README.md` draft for **2000 Habesha Restaurant**, tailored to reflect its cultural essence and your project setup:
+Here’s an enhanced `README.md` draft for **Tiytu Restorant Restaurant**, tailored to reflect its cultural essence and your project setup:
 
 ---
 
@@ -8,7 +8,7 @@ Here’s an enhanced `README.md` draft for **2000 Habesha Restaurant**, tailored
 
 ## ⬇️ Description
 
-2000 Habesha offers “a full Ethiopian cultural journey through traditional cuisine, live performances, and unforgettable hospitality” in Addis Ababa’s Bole area ([2000 Habesha][1]). Founded in 2000 to commemorate Ethiopia’s millennium, the restaurant immerses guests in authentic culture through dishes like Doro Wat, Tibs, Kitfo, Shiro, vegan Beyaynetu, and nightly dance and music shows ([2000 Habesha][1]).
+2000 Habesha offers “a full Ethiopian cultural journey through traditional cuisine, live performances, and unforgettable hospitality” in Addis Ababa’s Bole area ([Tiytu Restorant][1]). Founded in 2000 to commemorate Ethiopia’s millennium, the restaurant immerses guests in authentic culture through dishes like Doro Wat, Tibs, Kitfo, Shiro, vegan Beyaynetu, and nightly dance and music shows ([Tiytu Restorant][1]).
 
 This web application aims to:
 

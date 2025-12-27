@@ -50,7 +50,7 @@ export default function OurStory() {
               What Makes Us Unique:
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              At 2000 Habesha, we offer more than a meal — we deliver an
+              At Tiytu Restorant, we offer more than a meal — we deliver an
               authentic Ethiopian cultural journey. From homemade injera and
               locally sourced spices to communal dining in traditional mesob
               baskets, every visit immerses you in our heritage. As night falls,
