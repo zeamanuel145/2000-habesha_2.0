@@ -17,7 +17,7 @@ export default function Footer() {
                 </span>{" "}
               </div>
               <div>
-                <h3 className="font-bold">Tiytu Restorant Cultural</h3>
+                <h3 className="font-bold">2000 Habesha Cultural</h3>
                 <p className="text-sm">Restaurant</p>
               </div>
             </div>
