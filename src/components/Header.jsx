@@ -22,7 +22,7 @@ export default function Header({ onReservationClick }) {
             className="w-10 h-10 rounded-full object-cover"
           />
           <span className="text-white text-lg font-semibold hidden sm:block">
-            Tiytu Restorant
+            2000 Habesha Restorant
           </span>
         </Link>
 
