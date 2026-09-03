@@ -32,7 +32,7 @@ export default function Hero({ onReservationClick }) {
         <div className="text-center text-white max-w-4xl">
           <p className="text-lg mb-4">Welcome to</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Tiytu Restorant Cultural Restaurant
+            2000 Habesha Cultural Restaurant
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Authentic Ethiopian Experience in the Heart of Addis Ababa
