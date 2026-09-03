@@ -17,7 +17,7 @@ export default function Footer() {
                 </span>{" "}
               </div>
               <div>
-                <h3 className="font-bold">2000 Habesha Cultural</h3>
+                <h3 className="font-bold">Taytu Cultural</h3>
                 <p className="text-sm">Restaurant</p>
               </div>
             </div>
@@ -27,7 +27,7 @@ export default function Footer() {
             <Link href="../Contact" className="block mb-4">
               <h4 className="font-semibold text-blue-500 mb-4">Contact us</h4>
             </Link>
-            <p className="text-sm mb-2">habesha2000@gmail.com</p>
+            <p className="text-sm mb-2">tayturestaurant0@gmail.com</p>
             <p className="text-sm">+251 912 838 383</p>
           </div>
 
@@ -48,7 +48,7 @@ export default function Footer() {
 
         <div className="border-t border-yellow-700 mt-8 pt-8 flex justify-between items-center">
           <p className="text-sm">
-            &copy; 2025 2000 Habesha Cultural Restaurant. All rights reserved.
+            &copy; 2025 Taytu Cultural Restaurant. All rights reserved.
           </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-yellow-300 transition-colors">
